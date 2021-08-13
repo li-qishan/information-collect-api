@@ -16,10 +16,10 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.macro.mall.tiny.modules")
-                .title("mall-tiny项目骨架")
-                .description("mall-tiny项目骨架相关接口文档")
-                .contactName("macro")
+                .apiBasePackage("com.hst.johns.collection.modules")
+                .title("项目骨架")
+                .description("项目骨架相关接口文档")
+                .contactName("johns")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();
