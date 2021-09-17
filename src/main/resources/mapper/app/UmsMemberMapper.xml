@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hst.johns.collection.modules.app1.mapper.UmsMemberMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hst.johns.collection.modules.app.model.UmsMember">
+        <id column="id" property="id" />
+        <result column="uid" property="uid" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="type" property="type" />
+        <result column="postion" property="postion" />
+        <result column="json_str" property="jsonStr" />
+        <result column="create_time" property="createTime" />
+        <result column="status" property="status" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+</mapper>

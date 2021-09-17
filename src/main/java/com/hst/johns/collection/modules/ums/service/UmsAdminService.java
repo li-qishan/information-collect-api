@@ -2,14 +2,18 @@ package com.hst.johns.collection.modules.ums.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.hst.johns.collection.modules.app.dto.UmsAdminDataQuery;
+import com.hst.johns.collection.modules.app.dto.UmsAppAdminParam;
 import com.hst.johns.collection.modules.ums.dto.UmsAdminParam;
 import com.hst.johns.collection.modules.ums.dto.UpdateAdminPasswordParam;
+import com.hst.johns.collection.modules.ums.dto.UpdateAppPasswordParam;
 import com.hst.johns.collection.modules.ums.model.UmsAdmin;
 import com.hst.johns.collection.modules.ums.model.UmsResource;
 import com.hst.johns.collection.modules.ums.model.UmsRole;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -21,11 +25,24 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * 根据用户名获取后台管理员
      */
     UmsAdmin getAdminByUsername(String username);
+    /**
+     * 根据手机号获取后台管理员
+     */
+    UmsAdmin getAdminByPhone(String type,String phone);
+    /**
+     * 根据手机号获取后台管理员
+     */
+    UmsAdminDataQuery getNameAndPhone(String type, Long uid);
 
     /**
      * 注册功能
      */
     UmsAdmin register(UmsAdminParam umsAdminParam);
+
+    /**
+     * 注册功能APP
+     */
+    UmsAdmin appRegister(UmsAppAdminParam umsAppAdminParam);
 
     /**
      * 登录功能
@@ -34,6 +51,13 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * @return 生成的JWT的token
      */
     String login(String username,String password);
+    /**
+     * 登录功能
+     * @param phone 用户名
+     * @param password 密码
+     * @return 生成的JWT的token
+     */
+    String appLogin(String type,String phone,String password);
 
     /**
      * 刷新token的功能
@@ -76,9 +100,19 @@ public interface UmsAdminService extends IService<UmsAdmin> {
      * 修改密码
      */
     int updatePassword(UpdateAdminPasswordParam updatePasswordParam);
+    /**
+     * 修改密码
+     */
+    int updateAppPassword(UpdateAppPasswordParam updateAppPasswordParam);
 
     /**
      * 获取用户信息
      */
     UserDetails loadUserByUsername(String username);
+    /**
+     * 获取用户信息
+     */
+    UserDetails loadUserByPhone(String type,String phone);
+
+    Long getCunrrentUserId(HttpServletRequest request);
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hst.johns.collection.modules.app.mapper.UmsSmsHistoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hst.johns.collection.modules.app.model.UmsSmsHistory">
+        <id column="id" property="id" />
+        <result column="phone" property="phone" />
+        <result column="concent" property="concent" />
+        <result column="is_success" property="isSuccess" />
+        <result column="release_time" property="releaseTime" />
+    </resultMap>
+
+</mapper>

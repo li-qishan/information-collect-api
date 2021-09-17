@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hst.johns.collection.modules.app.mapper.AreaMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hst.johns.collection.modules.app.model.Area">
+        <id column="id" property="id"/>
+        <result column="code" property="code"/>
+        <result column="label" property="label"/>
+        <result column="full_name" property="fullName"/>
+        <result column="sort_value" property="sortValue"/>
+        <result column="longitude" property="longitude"/>
+        <result column="latitude" property="latitude"/>
+        <result column="level" property="level"/>
+        <result column="source_" property="source"/>
+        <result column="state" property="state"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="created_by" property="createdBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="updated_by" property="updatedBy"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, code, label, full_name, sort_value, longitude, latitude, level, source_, state, parent_id, create_time, created_by, update_time, updated_by
+    </sql>
+
+    <select id="listAllProvince" resultMap="BaseResultMap">
+        SELECT id, code,  label,  full_name ,sort_value ,  level,  state FROM ums_area WHERE parent_id = 0 AND state=0 ORDER BY `code` asc
+    </select>
+
+    <select id="listAllCity" resultMap="BaseResultMap" parameterType="long">
+        SELECT id, code,  label,  full_name , sort_value ,  level,  state FROM ums_area WHERE parent_id = #{pid} and state=0 ORDER BY sort_value asc
+    </select>
+
+</mapper>

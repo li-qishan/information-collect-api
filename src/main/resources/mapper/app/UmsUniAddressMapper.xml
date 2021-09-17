@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hst.johns.collection.modules.app1.mapper.UmsUniAddressMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hst.johns.collection.modules.app.model.UmsUniAddress">
+        <id column="id" property="id" />
+        <result column="uni_addres_id" property="uniAddresId" />
+        <result column="uid" property="uid" />
+        <result column="name" property="name" />
+        <result column="phone" property="phone" />
+        <result column="certificate_type" property="certificateType" />
+        <result column="certificate_name" property="certificateName" />
+        <result column="certificate_num" property="certificateNum" />
+        <result column="province_code" property="provinceCode" />
+        <result column="province_name" property="provinceName" />
+        <result column="city_code" property="cityCode" />
+        <result column="city_name" property="cityName" />
+        <result column="county_code" property="countyCode" />
+        <result column="county_name" property="countyName" />
+        <result column="town_code" property="townCode" />
+        <result column="town_name" property="townName" />
+        <result column="public_address" property="publicAddress" />
+        <result column="private_address" property="privateAddress" />
+        <result column="express_type" property="expressType" />
+        <result column="express_name" property="expressName" />
+        <result column="create_time" property="createTime" />
+        <result column="status" property="status" />
+        <result column="is_del" property="isDel" />
+    </resultMap>
+
+</mapper>

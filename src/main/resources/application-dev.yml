@@ -14,3 +14,12 @@ logging:
   level:
     root: info
     com.hst.johns.collection : debug
+
+wx:
+  mp:
+    configs:
+      - appId: wx6a5b4901ea3f40d7
+        secret: 40e61b910b431841e15b4aa3d1ccfcc2
+        token: Authorization
+        aesKey: ObpYGWaXjfs6eoht5cUXNFjd5C5Y2tOq2K5tO9ZwEtg
+

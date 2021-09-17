@@ -16,6 +16,10 @@ public interface UmsAdminCacheService {
      * 删除后台用户缓存
      */
     void delAdmin(Long adminId);
+    /**
+     * 删除后台用户缓存
+     */
+    void delAdminType(Long adminId,String type);
 
     /**
      * 删除后台用户资源列表缓存
@@ -46,6 +50,16 @@ public interface UmsAdminCacheService {
      * 设置缓存后台用户信息
      */
     void setAdmin(UmsAdmin admin);
+
+    /**
+     * 获取缓存后台用户信息
+     */
+    UmsAdmin getAdminType(String username,String type);
+
+    /**
+     * 设置缓存后台用户信息
+     */
+    void setAdminType(UmsAdmin admin,String type);
 
     /**
      * 获取缓存后台用户资源列表

@@ -4,25 +4,58 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.hst.johns.collection.modules.ums.model.UmsAdmin">
-        <id column="id" property="id" />
-        <result column="username" property="username" />
-        <result column="password" property="password" />
-        <result column="icon" property="icon" />
-        <result column="email" property="email" />
-        <result column="nick_name" property="nickName" />
-        <result column="note" property="note" />
-        <result column="create_time" property="createTime" />
-        <result column="login_time" property="loginTime" />
-        <result column="status" property="status" />
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="icon" property="icon"/>
+        <result column="email" property="email"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="note" property="note"/>
+        <result column="create_time" property="createTime"/>
+        <result column="login_time" property="loginTime"/>
+        <result column="status" property="loginTime"/>
     </resultMap>
 
     <select id="getAdminIdList" resultType="java.lang.Long">
+        SELECT DISTINCT ar.admin_id
+        FROM ums_role_resource_relation rr
+                 LEFT JOIN ums_admin_role_relation ar ON rr.role_id = ar.role_id
+        WHERE rr.resource_id = #{resourceId}
+    </select>
+
+    <insert id="insr" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.hst.johns.collection.modules.ums.model.UmsAdmin">
+        insert into ums_admin(username, password, icon, email, nick_name, note, create_time, login_time, status)
+        values (#{username}, #{password}, 'https://ae01.alicdn.com/kf/H8c2725b79bcf444eb236045f14c06304K.jpg', #{email},
+                #{nickName}, #{note}, now(), now(), 1)
+    </insert>
+
+
+    <select id="getUserApp" resultType="com.hst.johns.collection.modules.ums.model.UmsAdmin">
         SELECT
-            DISTINCT ar.admin_id
+            ua.*
         FROM
-            ums_role_resource_relation rr
-                LEFT JOIN ums_admin_role_relation ar ON rr.role_id = ar.role_id
-        WHERE rr.resource_id=#{resourceId}
+            ums_member um
+                LEFT JOIN ums_admin ua ON um.uid = ua.id
+        WHERE
+          um.type = #{type}
+          AND um.is_del = 0
+          AND ua.username = #{phone}
+          AND um.phone = #{phone}
+    </select>
+
+    <select id="getNameAndPhone" resultType="com.hst.johns.collection.modules.app.dto.UmsAdminDataQuery">
+        SELECT
+            ua.username as acPhone,
+            um.phone as umPhone,
+            um.name as umName
+        FROM
+            ums_member um
+                LEFT JOIN ums_admin ua ON um.uid = ua.id
+        WHERE
+            um.type = #{type}
+          AND um.is_del = 0
+          and um.uid =#{uid}
     </select>
 
 </mapper>

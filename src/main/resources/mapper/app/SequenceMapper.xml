@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hst.johns.collection.modules.app.mapper.SequenceMapper">
+
+    <update id="updateBuildOnlyNumber">
+        update ums_sequence set current_val = current_val + 1 where seq_name = 'member_generater_seq'
+    </update>
+
+    <select id="getBuildOnlyNumber" resultType="java.lang.Long">
+      select current_val from ums_sequence where seq_name = 'member_generater_seq'
+    </select>
+
+    <update id="updateBuildOnlyNumber2">
+        update ums_sequence set current_val = current_val + 1 where seq_name = 'uniaddress_generater_seq'
+    </update>
+
+    <select id="getBuildOnlyNumber2" resultType="java.lang.Long">
+      select current_val from ums_sequence where seq_name = 'uniaddress_generater_seq'
+    </select>
+
+</mapper>

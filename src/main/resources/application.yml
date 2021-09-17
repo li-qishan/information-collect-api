@@ -1,5 +1,12 @@
 server:
-  port: 7777
+  port: 8089
+    #配置证书
+  #这里是配置你刚才部署在resources下的".jks"文件
+  ssl:
+    key-store: classpath:6191236_www.wuxianliuliang.cn.jks
+    key-store-password: 2wgs0cOy
+    key-store-type: JKS
+
 
 spring:
   application:
@@ -23,15 +30,19 @@ jwt:
   tokenHead: 'Bearer '  #JWT负载中拿到开头
 
 redis:
-  database: mall
+  database: system
   key:
     admin: 'ums:admin'
+    app: 'app:admin'
     resourceList: 'ums:resourceList'
     authCode: "app:authCode:"
   expire:
     common: 86400 # 24小时
-    authCode: 120 # 验证码超期时间
+    authCode: 60 # 验证码超期时间
 
+logging:
+  file:
+    name: D:/evn/exe
 secure:
   ignored:
     urls: #安全路径白名单
@@ -50,5 +61,22 @@ secure:
       - /admin/register
       - /admin/info
       - /admin/logout
-      - /sso/getAuthCode
-      - /sso/verifyAuthCode
+      - /app/member/getAuthCode
+      - /app/member/verifyAuthCode
+      - /app/member/serialNumberGeneration
+      - /app/member/appRegister
+      - /app/member/appLogin
+      - /app/member/updatePassword
+      - /app/umsUniAddress/list
+      - /app/umsUniAddress/create
+      - /app/umsUniAddress/{id}
+      - /app/umsUniAddress/update
+      - /app/umsUniAddress/update/{id}
+      - /app/umsUniAddress/delete/{id}
+      - /app/umsUniAddress/updateStatus/{id}
+      - /dictionary/getDictionaryByType
+      - /area/listAll
+      - /weChat/auth
+      - /weChat/getOpenId
+
+

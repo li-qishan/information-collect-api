@@ -1,0 +1,15 @@
+{
+  "serverUrl": "http://39.101.64.108",
+  "allInOne": true,
+  "isStrict": false,
+  "outPath": "src/main/resources/static/doc",
+  "projectName": "个人虚拟地址小程序",
+  "language":"CHINESE",
+  "appKey": "20210917888373280375832576",
+  "appToken": "f12e58f0cd3c4fbb948a8bc7b395a6ac",
+  "secret": "FILyjjm>fFYYC,%f~X&y-aJEsVwj!D.L",
+  "openUrl": "http://39.101.64.108:7700/api",
+  "debugEnvName":"测试环境",
+  "debugEnvUrl":"http://39.101.64.108"
+}
+

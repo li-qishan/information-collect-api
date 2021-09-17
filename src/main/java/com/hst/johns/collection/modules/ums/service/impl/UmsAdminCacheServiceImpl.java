@@ -37,6 +37,8 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     private Long REDIS_EXPIRE;
     @Value("${redis.key.admin}")
     private String REDIS_KEY_ADMIN;
+    @Value("${redis.key.app}")
+    private String REDIS_KEY_ADMIN_APP;
     @Value("${redis.key.resourceList}")
     private String REDIS_KEY_RESOURCE_LIST;
 
@@ -45,6 +47,14 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
         UmsAdmin admin = adminService.getById(adminId);
         if (admin != null) {
             String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN + ":" + admin.getUsername();
+            redisService.del(key);
+        }
+    }
+    @Override
+    public void delAdminType(Long adminId,String type) {
+        UmsAdmin admin = adminService.getById(adminId);
+        if (admin != null) {
+            String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN_APP + ":" + admin.getUsername()+ ":" +type;
             redisService.del(key);
         }
     }
@@ -98,6 +108,18 @@ public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
     @Override
     public void setAdmin(UmsAdmin admin) {
         String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN + ":" + admin.getUsername();
+        redisService.set(key, admin, REDIS_EXPIRE);
+    }
+
+    @Override
+    public UmsAdmin getAdminType(String username,String type) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN_APP + ":" + username+ ":" +type;
+        return (UmsAdmin) redisService.get(key);
+    }
+
+    @Override
+    public void setAdminType(UmsAdmin admin,String type) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN_APP + ":" + admin.getUsername()+ ":" +type;
         redisService.set(key, admin, REDIS_EXPIRE);
     }
 

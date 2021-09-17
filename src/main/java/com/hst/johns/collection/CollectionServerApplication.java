@@ -6,6 +6,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.util.unit.DataSize;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 
 import java.net.InetAddress;
 
@@ -28,5 +37,6 @@ public class CollectionServerApplication {
                 env.getProperty("server.port", "9990"));
 
     }
+
 
 }
